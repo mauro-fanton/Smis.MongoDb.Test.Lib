@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Smis.MongoDb.Test.Lib</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Mauro Fanton</Authors>
+    <Product>Smis MongoDb Test Library</Product>
+    <PackageTags>Smis;Smis.MongoDb.Test.Lib</PackageTags>
+    <Description>
+      This client library provide a MongoDb test library based on Mongo2Go 
+    </Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.0" />
+    <PackageReference Include="Mongo2Go" Version="3.1.3" />
+    <PackageReference Include="Smis.MongoDb.Lib" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Fixtures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fixtures\" />
+  </ItemGroup>
+</Project>
