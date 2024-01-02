@@ -1,0 +1,11 @@
+mode: Mainline
+  branches: 
+    main:
+      regex: ^dev(elop)?(ment)?$
+      tag: dev
+      increment: Patch 
+ignore:
+  sha: []
+merge-message-formats: {}
+update-build-number: true
+assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{env:BUILD_NUMBER}'
