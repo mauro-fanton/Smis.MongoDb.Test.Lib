@@ -1,0 +1,9 @@
+assembly-versioning-scheme: MajorMinorPatch
+mode: Mainline
+branches: {}
+ignore:
+  sha: []
+merge-message-formats: {}
+# use an environment variable or raise an error if not available
+assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{env:BUILD_NUMBER ?? 42}'
+update-build-number: true
