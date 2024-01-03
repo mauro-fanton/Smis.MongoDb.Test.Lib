@@ -13,7 +13,7 @@ As default this is set to read. But here it set to write too otherwise the CI wi
 
 1.  In your repository click **Setting**.If you cannot see the "Settings" tab, select the  dropdown menu, then click **Settings**.
 2.  In the left sidebar, click  **Actions**, then click **General**.
-3.  Under **Workflow permissions**, use the **Allow GitHub Actions to create and approve pull requests** setting to configure whether GITHUB_TOKEN can create and approve pull requests.
+3.  Under **Workflow permissions** and select **Read and Write permission** setting.
 4.  Click **Save** to apply the settings.
 
 ## Versioning
