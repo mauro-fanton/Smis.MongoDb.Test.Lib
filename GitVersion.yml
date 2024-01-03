@@ -5,5 +5,5 @@ ignore:
   sha: []
 merge-message-formats: {}
 # use an environment variable or raise an error if not available
-assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{github.run_number ?? 42}'
+assembly-file-versioning-format: '{Major}.{Minor}.{Patch}.{env:GITHUB_RUN_NUMBER ?? 42}'
 update-build-number: true
