@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Runtime.InteropServices;
-using Microsoft.Extensions.Configuration;
+﻿using System.Runtime.InteropServices;
 using Microsoft.Extensions.Logging;
 using Mongo2Go;
 using MongoDB.Driver;
 using Smis.MongoDb.Lib.Connection;
-using Smis.MongoDb.Lib.Repositories;
 
 namespace Smis.MongoDb.Test.Lib.Fixture;
 
@@ -92,11 +89,15 @@ public abstract class MongoDbFixture<TDocument> : IDisposable where TDocument : 
 
     public void Reset()
     {
+        logger.LogInformation($"[MongoDbFixture] - Deleting All record in database: {databaseName} for collection: {collectionName}");
         Collection().DeleteManyAsync(_ => true).Wait();
     }
 
     public void Dispose()
-    {
+    {        
+        Reset();
+
+        logger.LogInformation($"[MongoDbFixture] - Disposing MongoDbRunner for database: {databaseName}...");
         Runner.Dispose();
     }
 
