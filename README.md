@@ -18,7 +18,7 @@ As default this is set to read. But here it set to write too otherwise the CI wi
 
 ## Versioning
 
-Versining is given bu the GitVersion file. If you want to change the version od this package, you will need to change the version in teh GitVersion.yml file.
+Versining is given by the GitVersion file. If you want to change the version od this package, you will need to change the version in teh GitVersion.yml file.
 
 ## packages.sh
 
