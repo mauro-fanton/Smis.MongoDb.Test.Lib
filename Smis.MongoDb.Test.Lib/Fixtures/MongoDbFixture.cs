@@ -30,9 +30,9 @@ public abstract class MongoDbFixture<TDocument> : IDisposable where TDocument : 
         SetConfigurationSettings();
     }
 
-    public abstract Dictionary<string, string> Configure();
+    protected abstract Dictionary<string, string> Configure();
 
-  
+
     protected MongoDbConnection Connection()
     {
         return new MongoDbConnection(databaseName, Client);
@@ -77,14 +77,19 @@ public abstract class MongoDbFixture<TDocument> : IDisposable where TDocument : 
         return collection;
     }
 
-    public void Insert(TDocument collection)
+    protected void Insert(TDocument collection)
     {
         Collection().InsertOne(collection);
     }
 
-    public List<TDocument> FindAll()
+    protected List<TDocument> FindAll()
     {
         return Collection().Find(Builders<TDocument>.Filter.Empty).ToList();
+    }
+
+    protected List<MongoDB.Bson.BsonDocument> Indexes()
+    {
+        return Collection().Indexes.List().ToList();
     }
 
     public void Reset()
