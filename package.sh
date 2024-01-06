@@ -46,9 +46,12 @@ mkdir -p $PUBLISHED_PACKAGE__DIR
 
 description "Clean project..."
 dotnet clean -c $1
+dotnet build -c $1
+
+version=$(dotnet-gitversion | grep -o '"MajorMinorPatch":\s.*"[^"]*' | egrep -o '[+-]?([0-9].*)[^",]')
 
 description "Creating nuget packages..."
-dotnet pack -o $PUBLISHED_PACKAGE__DIR -c $CONFIG
+dotnet pack -o $PUBLISHED_PACKAGE__DIR -c $CONFIG /p:Version=$version
 
 # todo: add readme file to nuget package
 

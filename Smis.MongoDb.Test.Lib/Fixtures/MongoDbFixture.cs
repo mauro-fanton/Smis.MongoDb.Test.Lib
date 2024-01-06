@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿
+using System.Runtime.InteropServices;
 using Microsoft.Extensions.Logging;
 using Mongo2Go;
 using MongoDB.Driver;
@@ -90,6 +91,22 @@ public abstract class MongoDbFixture<TDocument> : IDisposable where TDocument : 
     protected List<MongoDB.Bson.BsonDocument> Indexes()
     {
         return Collection().Indexes.List().ToList();
+    }
+
+    protected void CreateUniqueIndexes(string collectioName, List<string> indexName)
+    {
+        var indexes =  indexName.Select(e =>
+        {
+            return new CreateIndexModel<TDocument>
+            (
+                Builders<TDocument>
+                .IndexKeys
+                .Ascending(e),
+                new CreateIndexOptions() { Unique = true, Name = $"{collectioName}_{e}" }
+            );
+        }).ToList();
+
+        Collection().Indexes.CreateMany(indexes);
     }
 
     public void Reset()
